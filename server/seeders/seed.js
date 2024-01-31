@@ -25,12 +25,12 @@ db.once("open", async () => {
     await tempUser.save();
 
     // randomly add a user to each post
-    const tempUserAuthor = user[Math.floor(Math.random() * users.length)];
-    post.user = tempUserAuthor._id;
+    const tempUserAuthor = user[Math.floor(Math.random() * user.length)];
+    posts.user = tempUserAuthor._id;
     await newPost.save();
 
     // reference posts on user model, too
-    tempUserAuthor.classes.push(newPost._id);
+    tempUserAuthor.posts.push(newPost._id);
     await tempUserAuthor.save();
   }
 

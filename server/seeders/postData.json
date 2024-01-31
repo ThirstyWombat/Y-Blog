@@ -32,11 +32,11 @@
     "postAuthor": "David Thomas"
   },
   {
-    "thoughtText": "If you optimize everything, you will always be unhappy.",
+    "postBody": "If you optimize everything, you will always be unhappy.",
     "postAuthor": "Donald Knuth"
   },
   {
-    "thoughtText": "It's not a bug; it's an undocumented feature.",
+    "postBody": "It's not a bug; it's an undocumented feature.",
     "postAuthor": "Lernantino"
   }
 ]
