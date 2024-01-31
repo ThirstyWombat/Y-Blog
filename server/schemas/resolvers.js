@@ -1,4 +1,4 @@
-const { User, Thought: Post } = require("../models");
+const { User, Post } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -17,7 +17,6 @@ const resolvers = {
       return Post.findOne({ _id: postId });
     },
   },
-
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
@@ -26,29 +25,22 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
       if (!user) {
         throw AuthenticationError;
       }
-
       const correctPw = await user.isCorrectPassword(password);
-
       if (!correctPw) {
         throw AuthenticationError;
       }
-
       const token = signToken(user);
-
       return { token, user };
     },
-    addThought: async (parent, { postText, postAuthor }) => {
-      const post = await Post.create({ postText, postAuthor });
-
+    addPost: async (parent, { postBody, postAuthor }) => {
+      const post = await Post.create({ postBody, postAuthor });
       await User.findOneAndUpdate(
         { username: postAuthor },
         { $addToSet: { posts: post._id } }
       );
-
       return post;
     },
     addComment: async (parent, { postId, commentText, commentAuthor }) => {
@@ -63,7 +55,7 @@ const resolvers = {
         }
       );
     },
-    removeThought: async (parent, { postId }) => {
+    removePost: async (parent, { postId }) => {
       return Post.findOneAndDelete({ _id: postId });
     },
     removeComment: async (parent, { postId, commentId }) => {
