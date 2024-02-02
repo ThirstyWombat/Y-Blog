@@ -39,7 +39,11 @@ const resolvers = {
       const post = await Post.create({ postBody, postAuthor });
       await User.findOneAndUpdate(
         { username: postAuthor },
-        { $addToSet: { posts: post._id } }
+        { $addToSet: { posts: post._id } },
+        {
+          new: true,
+          runValidators: true,
+        }
       );
       return post;
     },
