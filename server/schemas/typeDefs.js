@@ -9,8 +9,7 @@ const typeDefs = `#graphql
 
   type Post {
     _id: ID
-    postText: String
-    postAuthor: String
+    postBody: String
     createdAt: String
     comments: [Comment]!
   }
@@ -29,7 +28,7 @@ const typeDefs = `#graphql
 
   type Query {
     users: [User]
-    user(username: String!): User
+    user(_id: ID!): User
     posts(username: String): [Post]
     post(postId: ID!): Post
   }
@@ -37,7 +36,7 @@ const typeDefs = `#graphql
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPost(postBody: String!, postAuthor: String!): Post
+    addPost(postBody: String!, userID: ID!): Post
     addComment(
       postId: ID!
       commentText: String!
