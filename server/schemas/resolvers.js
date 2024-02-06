@@ -37,6 +37,7 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parent, { postBody, userId }) => {
+      console.log(userId);
       const post = await Post.create({ postBody });
       await User.findOneAndUpdate(
         { _id: userId },
@@ -46,7 +47,7 @@ const resolvers = {
           runValidators: true,
         }
       );
-      console.log(post, post._id);
+      console.log("CONTENTS OF POST AND ID >", post, post._id);
       return post;
     },
     addComment: async (parent, { postId, commentText, commentAuthor }) => {
@@ -61,7 +62,13 @@ const resolvers = {
         }
       );
     },
-    removePost: async (parent, { postId }) => {
+    removePost: async (parent, { postId, userId }) => {
+      await User.findOneAndUpdate(
+        { _id: userId },
+        { $pull: { posts: postId } },
+        { new: true }
+      );
+
       return Post.findOneAndDelete({ _id: postId });
     },
     removeComment: async (parent, { postId, commentId }) => {

@@ -36,13 +36,13 @@ const typeDefs = `#graphql
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPost(postBody: String!, userID: ID!): Post
+    addPost(postBody: String!, userId: ID!): Post
     addComment(
       postId: ID!
       commentText: String!
       commentAuthor: String!
     ): Post
-    removePost(postId: ID!): Post
+    removePost(postId: ID!,userId:ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
   }
 `;
