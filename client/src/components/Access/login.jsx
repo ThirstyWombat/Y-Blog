@@ -16,6 +16,7 @@ export default function Login(){
 
     const handleSubmit=(e)=>{
         e.preventDefault();
+        console.log(loginState);
     }
 
     return(
@@ -23,17 +24,17 @@ export default function Login(){
         <div >
             {
                 fields.map(field=>
-                        <Input
-                            key={field.id}
-                            handleChange={handleChange}
-                            value={loginState[field.id]}
-                            labelText={field.labelText}
-                            labelFor={field.labelFor}
-                            id={field.id}
-                            name={field.name}
-                            type={field.type}
-                            isRequired={field.isRequired}
-                            placeholder={field.placeholder}
+                    <Input
+                        key={field.id}
+                        handleChange={handleChange}
+                        value={loginState[field.id]}
+                        labelText={field.labelText}
+                        labelFor={field.labelFor}
+                        id={field.id}
+                        name={field.name}
+                        type={field.type}
+                        isRequired={field.isRequired}
+                        placeholder={field.placeholder}
                     />
                 
                 )
