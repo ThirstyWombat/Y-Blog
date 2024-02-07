@@ -37,7 +37,7 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parent, { postBody, userId }) => {
-      console.log(userId);
+      
       const post = await Post.create({ postBody });
       await User.findOneAndUpdate(
         { _id: userId },
