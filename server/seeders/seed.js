@@ -9,7 +9,7 @@ const userData = require("./userData.json");
 
 db.once("open", async () => {
   await cleanDB("User", "users");
-  await cleanDB("Post", "post");
+  await cleanDB("Post", "posts");
 
   const posts = await Post.create(postData);
   const user = await User.create(userData);
