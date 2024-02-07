@@ -6,7 +6,7 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row">
-          <li className="mr-1">
+          <li className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
               Logout
@@ -17,10 +17,10 @@ function Nav() {
     } else {
       return (
         <ul className="flex-row">
-          <li className="mr-6">
-            <Link to="/signup" className="text-blue-500 hover:text-blue-800">Sign Up</Link>
+          <li className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">
+            <Link to="/signup">Sign Up</Link>
           </li>
-          <li className="mr-6">
+          <li className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">
             <Link to="/login">Login</Link>
           </li>
         </ul>
