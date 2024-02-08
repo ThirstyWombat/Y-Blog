@@ -1,28 +1,33 @@
-import { useState } from 'react';
-import { signupFields } from "../../constants/formfields"
+import { useState } from "react";
+import { signupFields } from "../../constants/formfields";
 import FormAction from "./formAction";
 import Input from "./input";
-import { SIGNUP  } from '../../utils/mutations';
-import { useMutation } from '@apollo/client';
+import { SIGNUP } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 
-const fields=signupFields;
-let fieldsState={username: '', email: '', password: ''};
+const fields = signupFields;
+let fieldsState = { username: "", email: "", password: "" };
 
-fields.forEach(field => fieldsState[field.id]='');
+fields.forEach((field) => (fieldsState[field.id] = ""));
 
-export default function Signup(){
-  const [signupState,setSignupState]=useState(fieldsState);
+export default function Signup() {
+  const [signupState, setSignupState] = useState(fieldsState);
   const [addUser] = useMutation(SIGNUP);
 
-  const handleChange=(e)=>setSignupState({...signupState,[e.target.id]:e.target.value});
+  const handleChange = (e) =>
+    setSignupState({ ...signupState, [e.target.id]: e.target.value });
 
-  const handleSubmit= async (e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(signupState);
     try {
-        const mutationResponse = await addUser({
-        variables: {username: fieldsState.username, email: fieldsState.email, password: fieldsState.password },
+      const mutationResponse = await addUser({
+        variables: {
+          username: fieldsState.username,
+          email: fieldsState.email,
+          password: fieldsState.password,
+        },
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
@@ -30,28 +35,25 @@ export default function Signup(){
       console.log(e);
     }
   };
-    return(
-        <form className="mt-8 space-y-6" >
-        <div className="">
-        {
-                fields.map(field=>
-                    <Input
-                        key={field.id}
-                        handleChange={handleChange}
-                        value={signupState[field.id]}
-                        labelText={field.labelText}
-                        labelFor={field.labelFor}
-                        id={field.id}
-                        name={field.name}
-                        type={field.type}
-                        isRequired={field.isRequired}
-                        placeholder={field.placeholder}
-                    />
-                
-                )
-            }
-          <FormAction handleSubmit={handleSubmit} text="Sign Up" />
-        </div>
-      </form>
-    )
+  return (
+    <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+      <div className="">
+        {fields.map((field) => (
+          <Input
+            key={field.id}
+            handleChange={handleChange}
+            value={signupState[field.id]}
+            labelText={field.labelText}
+            labelFor={field.labelFor}
+            id={field.id}
+            name={field.name}
+            type={field.type}
+            isRequired={field.isRequired}
+            placeholder={field.placeholder}
+          />
+        ))}
+        <FormAction text="Sign Up" />
+      </div>
+    </form>
+  );
 }
