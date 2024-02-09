@@ -7,15 +7,15 @@ export default function TestNav() {
     if (Auth.loggedIn()) {
       return (
         <>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="#">Profile</NavLink>
+          <NavLink to="/" className="px-4">Home</NavLink>
+          <NavLink to="#" className="px-4">Profile</NavLink>
         </>
       );
     }
     return (
       <>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/" className="px-4">Home</NavLink>
+        <NavLink to="/signup"className="px-4" >Sign Up</NavLink>
       </>
     );
   }
@@ -24,7 +24,7 @@ export default function TestNav() {
     if (Auth.loggedIn()) {
       return (
         <>
-          <div className="" onClick={() => Auth.logout()}>
+          <div onClick={() => Auth.logout()}>
             Logout <span aria-hidden="true">→</span>
           </div>
         </>
@@ -34,7 +34,6 @@ export default function TestNav() {
       <>
         <Link
           to="/login"
-          className=""
         >
           Log in <span aria-hidden="true">→</span>
         </Link>
@@ -43,7 +42,8 @@ export default function TestNav() {
   }
   return (
     <header className="flex flex-wrap space-x-1 space-y-1 justify-between mx-6">
-      <div className="">
+      <div className="text-4xl
+    font-mono hover:underline decoration-[#B8DEF4]">
         <Link to="/">Y</Link>
       </div>
 
