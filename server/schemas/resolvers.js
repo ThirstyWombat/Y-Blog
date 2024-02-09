@@ -37,8 +37,7 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parent, { postBody, userId }) => {
-      
-      const post = await Post.create({ postBody });
+      const post = await Post.create({ userId, postBody });
       await User.findOneAndUpdate(
         { _id: userId },
         { $addToSet: { posts: post._id } },

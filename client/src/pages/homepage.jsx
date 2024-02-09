@@ -1,9 +1,9 @@
-import Post from "../components/Post";
+import PostComponent from "../components/PostComponent";
 
 export default function Homepage() {
   return (
     <div>
-      <Post />
+      <PostComponent />
     </div>
   );
 }

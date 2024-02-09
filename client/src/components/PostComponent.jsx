@@ -1,4 +1,4 @@
-export default function Post() {
+export default function PostComponent() {
   return (
     <div>
       <div className="flex flex-shrink-0 p-4 pb-0">
