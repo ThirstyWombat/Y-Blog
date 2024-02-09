@@ -42,13 +42,13 @@ export default function TestNav() {
     );
   }
   return (
-    <header className="flex flex-wrap space-x-1 space-y-1 justify-between">
+    <header className="flex flex-wrap space-x-1 space-y-1 justify-between mx-6">
       <div className="">
         <Link to="/">Y</Link>
       </div>
 
       <div className="">
-        <nav className="m-2">
+        <nav className="mx-2">
           {renderLinks()}
         </nav>
       </div>
