@@ -7,8 +7,7 @@ import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 
 const fields = signupFields;
-let fieldsState = { username: "", email: "", password: "" };
-
+let fieldsState = {};
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Signup() {
@@ -24,9 +23,9 @@ export default function Signup() {
     try {
       const mutationResponse = await addUser({
         variables: {
-          username: fieldsState.username,
-          email: fieldsState.email,
-          password: fieldsState.password,
+          username: signupState.username,
+          email: signupState.email,
+          password: signupState.password,
         },
       });
       const token = mutationResponse.data.login.token;

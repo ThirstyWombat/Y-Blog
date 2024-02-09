@@ -7,7 +7,7 @@ import Auth from "../../utils/auth";
 import { LOGIN } from "../../utils/mutations";
 
 const fields = loginFields;
-let fieldsState = { email: "", password: "" };
+let fieldsState = {};
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Login() {
@@ -23,7 +23,7 @@ export default function Login() {
     console.log(loginState);
     try {
       const mutationResponse = await login({
-        variables: { email: fieldsState.email, password: fieldsState.password },
+        variables: { email: loginState.email, password: loginState.password },
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
