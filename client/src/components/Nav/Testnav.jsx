@@ -1,9 +1,9 @@
-// import Auth from "../../utils/auth";
+import Auth from "../../utils/auth";
 import { Link, NavLink } from "react-router-dom";
-const IS_LOGGED_IN = true;
+// const IS_LOGGED_IN = false;
 export default function TestNav() {
   function renderLinks() {
-    if (IS_LOGGED_IN) {
+    if (Auth.loggedIn()) {
       return (
         <>
           <NavLink to="/">Home</NavLink>
@@ -20,7 +20,7 @@ export default function TestNav() {
   }
 
   function renderLogin() {
-    if (IS_LOGGED_IN) {
+    if (Auth.loggedIn()) {
       return (
         <>
           <div className="text-lg font-semibold leading-6 text-gray-900">
@@ -46,12 +46,12 @@ export default function TestNav() {
         <Link to="/">Y</Link>
       </div>
 
-      <div className=" flex-grow border border-solid border-black-500 w-6/12">
-        <nav className="flex items-center justify-center space-x-10">
+      <div className=" flex-grow   hidden md:block">
+        <nav className="flex items-center justify-center space-x-16 text-lg font-semibold">
           {renderLinks()}
         </nav>
       </div>
-      <div className="w-3/12  flex justify-end">{renderLogin()}</div>
+      <div className="w-3/12  justify-end hidden md:flex">{renderLogin()}</div>
     </header>
   );
 }

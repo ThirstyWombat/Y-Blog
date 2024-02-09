@@ -28,7 +28,7 @@ export default function Signup() {
           password: signupState.password,
         },
       });
-      const token = mutationResponse.data.login.token;
+      const token = mutationResponse.data.addUser.token;
       Auth.login(token);
     } catch (e) {
       console.log(e);
