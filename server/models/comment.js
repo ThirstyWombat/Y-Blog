@@ -1,15 +1,25 @@
-const React = require('react');
+const { Schema, model } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
-const Comment = ({ comment }) => {
-  const { commentText, commentAuthor, createdAt } = comment;
+const commentSchema = new Schema({
+  commentText: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 280,
+  },
+  commentAuthor: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
+  },
+});
 
-  return (
-    <div className="comment">
-      <p className="comment-text">{commentText}</p>
-      <p className="comment-author">By: {commentAuthor.username}</p>
-      <p className="comment-date">Posted on: {new Date(createdAt).toLocaleString()}</p>
-    </div>
-  );
-};
+const Comment = model("Comment", commentSchema);
 
 module.exports = Comment;
