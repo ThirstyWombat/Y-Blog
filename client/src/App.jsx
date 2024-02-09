@@ -12,7 +12,7 @@ import Access from "./pages/access/login";
 import SignUp from "./pages/access/signUp";
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: "/graphql"
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header

@@ -11,7 +11,7 @@ export default function SignUp(){
           linkName="Login"
           linkUrl="/login" />
           <Signup/>
-          </div>
+        </div>
       </>
     
     )
