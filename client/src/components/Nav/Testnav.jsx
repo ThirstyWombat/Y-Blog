@@ -1,6 +1,7 @@
 import Auth from "../../utils/auth";
 import { Link, NavLink } from "react-router-dom";
 // const IS_LOGGED_IN = false;
+//text-lg font-semibold leading-6 text-gray-900
 export default function TestNav() {
   function renderLinks() {
     if (Auth.loggedIn()) {
@@ -23,7 +24,7 @@ export default function TestNav() {
     if (Auth.loggedIn()) {
       return (
         <>
-          <div className="text-lg font-semibold leading-6 text-gray-900" onClick={() => Auth.logout()}>
+          <div className="" onClick={() => Auth.logout()}>
             Logout <span aria-hidden="true">→</span>
           </div>
         </>
@@ -33,7 +34,7 @@ export default function TestNav() {
       <>
         <Link
           to="/login"
-          className="text-lg font-semibold leading-6 text-gray-900"
+          className=""
         >
           Log in <span aria-hidden="true">→</span>
         </Link>
@@ -41,17 +42,17 @@ export default function TestNav() {
     );
   }
   return (
-    <header className="flex justify-between items-center w-full border-b z-20 p-8">
-      <div className="flex items-center justify-center w-3/12">
+    <header className="flex flex-wrap space-x-1 space-y-1 justify-between">
+      <div className="">
         <Link to="/">Y</Link>
       </div>
 
-      <div className=" flex-grow   hidden md:block">
-        <nav className="flex items-center justify-center space-x-16 text-lg font-semibold">
+      <div className="">
+        <nav className="m-2">
           {renderLinks()}
         </nav>
       </div>
-      <div className="w-3/12  justify-end hidden md:flex">{renderLogin()}</div>
+      <div className="">{renderLogin()}</div>
     </header>
   );
 }
