@@ -23,7 +23,7 @@ export default function TestNav() {
     if (Auth.loggedIn()) {
       return (
         <>
-          <div className="text-lg font-semibold leading-6 text-gray-900">
+          <div className="text-lg font-semibold leading-6 text-gray-900" onClick={() => Auth.logout()}>
             Logout <span aria-hidden="true">→</span>
           </div>
         </>
