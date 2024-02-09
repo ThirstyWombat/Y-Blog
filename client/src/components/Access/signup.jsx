@@ -28,14 +28,17 @@ export default function Signup() {
           password: signupState.password,
         },
       });
-      const token = mutationResponse.data.login.token;
+      const token = mutationResponse.data.addUser.token;
       Auth.login(token);
     } catch (e) {
       console.log(e);
     }
   };
   return (
-    <form className="mt-8 space-y-6 rounded-lg bg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] " onSubmit={handleSubmit}>
+    <form
+      className="mt-8 space-y-6 rounded-lg bg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] "
+      onSubmit={handleSubmit}
+    >
       <div className="">
         {fields.map((field) => (
           <Input
