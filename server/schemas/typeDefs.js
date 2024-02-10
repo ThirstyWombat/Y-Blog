@@ -28,6 +28,7 @@ const typeDefs = `#graphql
   }
 
   type Query {
+    me: User
     users: [User]
     user(_id: ID!): User
     posts(username: String): [Post]
