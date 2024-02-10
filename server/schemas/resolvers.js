@@ -12,7 +12,8 @@ const resolvers = {
     },
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Post.find(params).sort({ createdAt: -1 });
+
+      return Post.find(params).populate(["author"]).exec();
     },
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
@@ -37,7 +38,7 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parent, { postBody, userId }) => {
-      const post = await Post.create({ userId, postBody });
+      const post = await Post.create({ author: userId, postBody });
       await User.findOneAndUpdate(
         { _id: userId },
         { $addToSet: { posts: post._id } },

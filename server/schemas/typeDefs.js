@@ -9,7 +9,7 @@ const typeDefs = `#graphql
 
   type Post {
     _id: ID
-    userId:ID!
+    author:User
     postBody: String
     createdAt: String
     comments: [Comment]!

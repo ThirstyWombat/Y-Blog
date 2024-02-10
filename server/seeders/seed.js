@@ -12,17 +12,17 @@ db.once("open", async () => {
   await cleanDB("Post", "posts");
 
   const users = await User.create(userData);
-  const postDataWithUserIds = postData.map((post) => {
+  const postDataWithAuthors = postData.map((post) => {
     return {
       ...post,
-      userId: users[Math.floor(Math.random() * users.length)]._id,
+      author: users[Math.floor(Math.random() * users.length)]._id,
     };
   });
-  const posts = await Post.create(postDataWithUserIds);
+  const posts = await Post.create(postDataWithAuthors);
 
   for (let user of users) {
     const userPostsIds = posts
-      .filter((post) => post.userId === user._id)
+      .filter((post) => post.author === user._id)
       .map((post) => post._id);
 
     await User.findOneAndUpdate(
