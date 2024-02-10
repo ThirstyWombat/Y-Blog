@@ -37,10 +37,10 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPost: async (parent, { postBody, userId }) => {
-      const post = await Post.create({ author: userId, postBody });
+    addPost: async (parent, { postBody }, context) => {
+      const post = await Post.create({ author: context.user._id, postBody });
       await User.findOneAndUpdate(
-        { _id: userId },
+        { _id: context.user._id },
         { $addToSet: { posts: post._id } },
         {
           new: true,

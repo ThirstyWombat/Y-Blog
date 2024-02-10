@@ -51,7 +51,7 @@ function App() {
             <Route path="/user" element={<User />} />
             <Route path="/login" element={<Access />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/" element={<CreatePost />} />
+            <Route path="/create" element={<CreatePost />} />
             {/* Add more routes for other pages */}
           </Routes>
         </div>

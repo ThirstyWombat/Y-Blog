@@ -20,20 +20,23 @@ export default function Post() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(postState);
+
+    console.log("this is the post state", postState);
     try {
       const mutationResponse = await post({
-        variables: { content: postState.content },
+        variables: { postBody: postState.content },
       });
-      const token = mutationResponse.data.login.token;
-      Auth.login(token);
+      console.log(mutationResponse);
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <form className=" w-1/2  mt-8 space-y-6 rounded-lg bg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] " onSubmit={handleSubmit}>
+    <form
+      className=" w-1/2  mt-8 space-y-6 rounded-lg bg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] "
+      onSubmit={handleSubmit}
+    >
       <div>
         {fields.map((field) => (
           <Input
