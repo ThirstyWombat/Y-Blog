@@ -19,8 +19,9 @@ export const SIGNUP = gql`
 	}
 `;
 export const POST = gql`
-	mutation AddPost($postBody: String!, $userId: ID!) {
-		addPost(postBody: $postBody, userId: $userId) {
+	mutation AddPost($postBody: String!) {
+		addPost(postBody: $postBody) {
+			_id
 			postBody
 		}
 	}

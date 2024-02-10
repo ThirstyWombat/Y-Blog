@@ -23,7 +23,7 @@ export default function Post() {
     console.log(postState);
     try {
       const mutationResponse = await post({
-        variables: { title: postState.title, content: postState.content, user: postState._id },
+        variables: { content: postState.content },
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
@@ -33,7 +33,7 @@ export default function Post() {
   };
 
   return (
-    <form className=" w-1/2 md:w-full mt-8 space-y-6 rounded-lg bg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] " onSubmit={handleSubmit}>
+    <form className=" w-1/2  mt-8 space-y-6 rounded-lg bg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] " onSubmit={handleSubmit}>
       <div>
         {fields.map((field) => (
           <Input

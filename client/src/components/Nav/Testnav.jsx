@@ -8,7 +8,7 @@ export default function TestNav() {
       return (
         <>
           <NavLink to="/" className="px-4">Home</NavLink>
-          <NavLink to="#" className="px-4">Profile</NavLink>
+          <NavLink to="/user" className="px-4">Profile</NavLink>
         </>
       );
     }
@@ -44,7 +44,7 @@ export default function TestNav() {
     );
   }
   return (
-    <header className="flex flex-wrap space-x-1 space-y-1 justify-between mx-6">
+    <header className="flex flex-wrap space-x-1 space-y-1 justify-between mx-6 pb-6">
       <div className="text-4xl
     font-mono hover:underline decoration-[#B8DEF4]">
         <Link to="/">Y</Link>

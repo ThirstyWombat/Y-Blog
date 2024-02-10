@@ -1,5 +1,5 @@
 // import Header from "../../components/Access/header";
-import Post from "../../components/Post/post";
+import Post from "../../components/Post/CreatePost";
 
 export default function CreatePost(){
     return (

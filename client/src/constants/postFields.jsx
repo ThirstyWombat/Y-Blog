@@ -16,7 +16,7 @@ const postFields=[
         name:"content",
         type:"content",
         isRequired:true,
-        placeholder:"content"   
+        placeholder:"Enter your thoughts here"   
     }
 ]
 
