@@ -2,6 +2,12 @@ const { Schema, model, SchemaTypeOptions } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
 const postSchema = new Schema({
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+
   postBody: {
     type: String,
     required: true,
