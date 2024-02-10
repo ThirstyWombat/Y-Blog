@@ -1,4 +1,4 @@
-import PostComponent from "../components/PostComponent";
+import PostComponent from "../components/Post/PostComponent";
 import { useQuery } from "@apollo/client";
 import { GET_POSTS } from "../utils/queries";
 export default function Homepage() {
@@ -7,7 +7,7 @@ export default function Homepage() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className="flex flex-wrap flex-col content-center">
       {data?.posts.map((post) => (
         <PostComponent
           key={post._id}

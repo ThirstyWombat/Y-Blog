@@ -1,44 +1,48 @@
 import { useState } from "react";
-import { loginFields } from "../../constants/formfields";
-import Input from "./input";
-import FormAction from "./formAction";
+import { postFields } from "../../constants/postFields";
+import Input from "./postInput";
+import FormAction from "../Access/formAction";
 import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
-import { LOGIN } from "../../utils/mutations";
+import { POST } from "../../utils/mutations";
 
-const fields = loginFields;
+const fields = postFields;
 let fieldsState = {};
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
-export default function Login() {
-  const [loginState, setLoginState] = useState(fieldsState);
-  const [login, { error }] = useMutation(LOGIN);
+export default function Post() {
+  const [postState, setPostState] = useState(fieldsState);
+  const [post, { error }] = useMutation(POST);
 
   const handleChange = (e) => {
-    setLoginState({ ...loginState, [e.target.id]: e.target.value });
+    setPostState({ ...postState, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("this is the post state", postState);
     try {
-      const mutationResponse = await login({
-        variables: { email: loginState.email, password: loginState.password },
+      const mutationResponse = await post({
+        variables: { postBody: postState.content },
       });
-      const token = mutationResponse.data.login.token;
-      Auth.login(token);
+      console.log(mutationResponse);
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <form className="mt-8 space-y-6 rounded-lg bg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] " onSubmit={handleSubmit}>
+    <form
+      className=" w-1/2  mt-8 space-y-6 rounded-lg bg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] "
+      onSubmit={handleSubmit}
+    >
       <div>
         {fields.map((field) => (
           <Input
             key={field.id}
             handleChange={handleChange}
-            value={loginState[field.id]}
+            value={postState[field.id]}
             labelText={field.labelText}
             labelFor={field.labelFor}
             id={field.id}
@@ -52,11 +56,11 @@ export default function Login() {
       {error ? (
         <div>
           <p className="text-red-600 hover:text-red-500">
-            The credentials provided are incorrect
+            Sorry, The post cannot be created.
           </p>
         </div>
       ) : null}
-      <FormAction text="Login" />
+      <FormAction text="Post" />
     </form>
   );
 }

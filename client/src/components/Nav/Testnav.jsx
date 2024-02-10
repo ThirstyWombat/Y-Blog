@@ -1,20 +1,21 @@
 import Auth from "../../utils/auth";
 import { Link, NavLink } from "react-router-dom";
 // const IS_LOGGED_IN = false;
+//text-lg font-semibold leading-6 text-gray-900
 export default function TestNav() {
   function renderLinks() {
     if (Auth.loggedIn()) {
       return (
         <>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="#">Profile</NavLink>
+          <NavLink to="/" className="px-4">Home</NavLink>
+          <NavLink to="/user" className="px-4">Profile</NavLink>
         </>
       );
     }
     return (
       <>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/" className="px-4">Home</NavLink>
+        <NavLink to="/signup"className="px-4" >Sign Up</NavLink>
       </>
     );
   }
@@ -22,21 +23,20 @@ export default function TestNav() {
   function renderLogin() {
     if (Auth.loggedIn()) {
       return (
-        <>
+          <div>
           <Link
             className="text-lg font-semibold leading-6 text-gray-900"
             onClick={() => Auth.logout()}
           >
             Logout <span aria-hidden="true">→</span>
           </Link>
-        </>
+          </div>
       );
     }
     return (
       <>
         <Link
           to="/login"
-          className="text-lg font-semibold leading-6 text-gray-900"
         >
           Log in <span aria-hidden="true">→</span>
         </Link>
@@ -44,17 +44,18 @@ export default function TestNav() {
     );
   }
   return (
-    <header className="flex justify-between items-center w-full border-b z-20 p-8">
-      <div className="flex items-center justify-center w-3/12">
+    <header className="flex flex-wrap space-x-1 space-y-1 justify-between mx-6 pb-6">
+      <div className="text-4xl
+    font-mono hover:underline decoration-[#B8DEF4]">
         <Link to="/">Y</Link>
       </div>
 
-      <div className=" flex-grow   hidden md:block">
-        <nav className="flex items-center justify-center space-x-16 text-lg font-semibold">
+      <div className="">
+        <nav className="mx-2">
           {renderLinks()}
         </nav>
       </div>
-      <div className="w-3/12  justify-end hidden md:flex">{renderLogin()}</div>
+      <div className="">{renderLogin()}</div>
     </header>
   );
 }
