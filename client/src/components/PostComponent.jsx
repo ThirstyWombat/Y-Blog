@@ -1,4 +1,4 @@
-export default function PostComponent() {
+export default function PostComponent({ username, createdAt, postBody }) {
   return (
     <div>
       <div className="flex flex-shrink-0 p-4 pb-0">
@@ -13,9 +13,9 @@ export default function PostComponent() {
             </div>
             <div className="ml-3">
               <p className="text-base leading-6 font-medium ">
-                Sonali Hirave
+                {username}
                 <span className="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
-                  @ShonaDesign . 16 April
+                  {createdAt}
                 </span>
               </p>
             </div>
@@ -24,9 +24,7 @@ export default function PostComponent() {
       </div>
       <div className="pl-16">
         <p className="text-base width-auto font-medium flex-shrink">
-          Day 07 of the challenge I was wondering what I can do with , so just
-          started building Twitter UI using Tailwind and so far it looks so
-          promising. I will post my code after completion.
+          {postBody}
         </p>
 
         <div className="flex">
