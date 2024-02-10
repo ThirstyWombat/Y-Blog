@@ -1,6 +1,6 @@
 export default function PostComponent({ username, createdAt, postBody }) {
   return (
-    <div>
+    <div className="m-1 w-3/4 rounded-md appearance-none relative border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-600 focus:border-blue-600 focus:z-10 sm:text-sm">
       <div className="flex flex-shrink-0 p-4 pb-0">
         <a href="#" className="flex-shrink-0 group block">
           <div className="flex items-center">
@@ -12,9 +12,9 @@ export default function PostComponent({ username, createdAt, postBody }) {
               />
             </div>
             <div className="ml-3">
-              <p className="text-base leading-6 font-medium ">
+              <p className="text-base leading-6 font-medium group-hover:text-blue-300 transition ease-in-out duration-150">
                 {username}
-                <span className="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
+                <span className="ml-3 text-sm leading-5 font-medium text-gray-400 ">
                   {createdAt}
                 </span>
               </p>
@@ -23,7 +23,7 @@ export default function PostComponent({ username, createdAt, postBody }) {
         </a>
       </div>
       <div className="pl-16">
-        <p className="text-base width-auto font-medium flex-shrink">
+        <p className="mx-3 text-base width-auto font-medium flex-shrink">
           {postBody}
         </p>
 
@@ -33,7 +33,7 @@ export default function PostComponent({ username, createdAt, postBody }) {
               <div className="flex-1 text-center">
                 <a
                   href="#"
-                  className="w-12 mt-1 group flex items-center text-gray-500 px-3 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
+                  className="w-12 mt-1 group flex items-center text-gray-500 px-3 py-2 text-base leading-6 font-medium rounded-full hover:text-blue-300 transition ease-in-out duration-150"
                 >
                   <svg
                     className="text-center h-6 w-6"
@@ -52,7 +52,6 @@ export default function PostComponent({ username, createdAt, postBody }) {
           </div>
         </div>
       </div>
-      <hr className="border-gray-600"></hr>
     </div>
   );
 }

@@ -23,8 +23,6 @@ export default function TestNav() {
   function renderLogin() {
     if (Auth.loggedIn()) {
       return (
-        <>
-
           <div>
           <Link
             className="text-lg font-semibold leading-6 text-gray-900"
@@ -32,7 +30,7 @@ export default function TestNav() {
           >
             Logout <span aria-hidden="true">→</span>
           </Link>
-        </>
+          </div>
       );
     }
     return (
