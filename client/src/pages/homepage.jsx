@@ -6,7 +6,13 @@ import Post from "../components/Post/CreatePost";
 export default function Homepage() {
   const { loading, error, data } = useQuery(GET_POSTS);
   console.log("this is the data", data);
-  if (loading) return <p>Loading...</p>;
+  if (loading){
+    return (
+    <div >
+      <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
+      Loading... 
+    </div>); 
+  }
   function createButton() {
     if (Auth.loggedIn()) {
         return (
@@ -30,6 +36,7 @@ export default function Homepage() {
             postBody={post.postBody}
             createdAt={post.createdAt} />
         ))}
-      </div></>
+      </div>
+      </>
   );
 }

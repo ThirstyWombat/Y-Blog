@@ -4,15 +4,24 @@ import Post from "../../components/Post/CreatePost";
 import PostComponent from "../../components/Post/PostComponent";
 const User = () => {
   const { loading, error, data } = useQuery(GET_USER_POSTS);
-  console.log('user spec posts', data)
-  if (loading) return <p>Loading...</p>;
+  if (loading){
+    return (
+    <div >
+      <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
+      Loading... 
+    </div>); 
+  }
+ 
+
+  
   return (
     <>
     <div className="flex flex-col flex-wrap content-center">
     <Post />
-      {error ? (<div>
-          <p className="text-red-600 hover:text-red-500">
-            Sorry there was an error retireving your data.
+      {error ? (
+        <div className="my-8 p-8 bg-gray-200 rounded-lg">
+          <p className="italic text-lg ">
+            No posts yet.
           </p>
         </div>
       ) : 

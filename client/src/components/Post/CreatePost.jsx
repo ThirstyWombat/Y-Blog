@@ -3,12 +3,14 @@ import { postFields } from "../../constants/postFields";
 import Input from "./postInput";
 import FormAction from "../Access/formAction";
 import { useMutation } from "@apollo/client";
-import Auth from "../../utils/auth";
 import { POST } from "../../utils/mutations";
+
 
 const fields = postFields;
 let fieldsState = {};
 fields.forEach((field) => (fieldsState[field.id] = ""));
+
+
 
 export default function Post() {
   const [postState, setPostState] = useState(fieldsState);
@@ -61,7 +63,7 @@ export default function Post() {
           </p>
         </div>
       ) : null}
-      <FormAction text="Post" />
+      <FormAction text="Post"/>
     </form>
   );
 }
