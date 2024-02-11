@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { GET_POST } from "../../utils/queries";
 import PostComponent from "../Post/PostComponent";
 import CreateComment from "../PostComment/CreateComment";
+import CommmentComponent from "../CommentComponent";
 // use the params to get the id for the get post query
 //then generate the post using post component and data from query as parameters
 //underneath this post component have a add comment text field and submit button
@@ -25,6 +26,16 @@ export function SinglePost() {
         createdAt={data?.post.createdAt}
       />
       <CreateComment />
+
+      {data?.post.comments.map((comment) => (
+        <CommmentComponent
+          key={comment._id}
+          commentId={comment._id}
+          username={comment.commentAuthor?.username}
+          commentText={comment.commentText}
+          createdAt={comment.createdAt}
+        />
+      ))}
     </div>
   );
 }
