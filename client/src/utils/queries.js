@@ -36,7 +36,7 @@ export const GET_USER_POSTS = gql`
 `;
 
 export const GET_POST = gql`
-  {
+  query Post($postId: ID!) {
     post(postId: $postId) {
       _id
       postBody
@@ -46,6 +46,7 @@ export const GET_POST = gql`
           _id
           username
         }
+        _id
         commentText
         createdAt
       }

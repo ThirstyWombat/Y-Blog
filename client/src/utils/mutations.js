@@ -26,3 +26,38 @@ export const POST = gql`
     }
   }
 `;
+
+export const ADD_COMMENT = gql`
+  mutation AddComment($postId: ID!, $commentText: String!) {
+    addComment(postId: $postId, commentText: $commentText) {
+      _id
+      postBody
+      comments {
+        _id
+        commentText
+        createdAt
+        commentAuthor {
+          username
+        }
+      }
+    }
+  }
+`;
+
+export const REMOVE_COMMENT = gql`
+  mutation RemoveComment($postId: ID!, $commentId: ID!) {
+    removeComment(postId: $postId, commentId: $commentId) {
+      _id
+      postBody
+    }
+  }
+`;
+
+export const REMOVE_POST = gql`
+  mutation RemovePost($postId: ID!, $userId: ID!) {
+    removePost(postId: $postId, userId: $userId) {
+      _id
+      postBody
+    }
+  }
+`;
