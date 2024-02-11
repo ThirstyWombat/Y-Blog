@@ -29,7 +29,7 @@ const postSchema = new Schema({
       },
       commentAuthor: {
         type: Schema.Types.ObjectId,
-        ref: "user",
+        ref: "User",
         required: true,
       },
       createdAt: {
