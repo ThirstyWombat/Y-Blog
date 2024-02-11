@@ -14,7 +14,7 @@ import SignUp from "./pages/access/signUp";
 import TestNav from "./components/Nav/Testnav";
 import CreatePost from "./pages/post/post";
 import Homepage from "./pages/homepage";
-import SinglePost from "./pages/post/SinglePost";
+import { SinglePost } from "./components/Post/SinglePost";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
