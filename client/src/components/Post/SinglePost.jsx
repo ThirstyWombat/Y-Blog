@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_POST } from "../../utils/queries";
+import { ADD_COMMENT } from "../../utils/mutations";
 import PostComponent from "../Post/PostComponent";
 import CreateComment from "../PostComment/CreateComment";
 import CommmentComponent from "../CommentComponent";
@@ -26,7 +27,6 @@ export function SinglePost() {
         createdAt={data?.post.createdAt}
       />
       <CreateComment />
-
       {data?.post.comments.map((comment) => (
         <CommmentComponent
           key={comment._id}

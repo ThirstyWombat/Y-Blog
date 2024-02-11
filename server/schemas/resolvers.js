@@ -64,11 +64,16 @@ const resolvers = {
       console.log("CONTENTS OF POST AND ID >", post, post._id);
       return post;
     },
-    addComment: async (parent, { postId, commentText, commentAuthor }) => {
+    addComment: async (parent, { postId, commentText }, context) => {
       return Post.findOneAndUpdate(
         { _id: postId },
         {
-          $addToSet: { comments: { commentText, commentAuthor } },
+          $addToSet: {
+            comments: {
+              commentText: commentText,
+              commentAuthor: context.user._id,
+            },
+          },
         },
         {
           new: true,

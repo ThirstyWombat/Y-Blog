@@ -42,7 +42,6 @@ const typeDefs = `#graphql
     addComment(
       postId: ID!
       commentText: String!
-      commentAuthor: ID!
     ): Post
     removePost(postId: ID!,userId:ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
