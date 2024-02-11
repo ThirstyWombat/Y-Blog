@@ -38,7 +38,7 @@ function noPostsExists() {
           </p>
         </div>
       ) : 
-      data?.me.posts?.map((post) => (
+      data?.me?.posts?.map((post) => (
         <PostComponent
         key={post._id}
         username={data.me.username}
