@@ -54,7 +54,7 @@ export default function PostComponent({
             <div>
               <img
                 className="inline-block h-10 w-10 rounded-full"
-                src="https://pbs.twimg.com/profile_images/1121328878142853120/e-rpjoJi_bigger.png"
+                src="/assets/placeholder-profile-pic.png"
                 alt=""
               />
             </div>

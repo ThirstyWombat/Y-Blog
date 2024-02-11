@@ -22,7 +22,10 @@ const resolvers = {
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
 
-      return Post.find(params).populate(["author"]).exec();
+      return Post.find(params)
+        .populate(["author"])
+        .sort({ createdAt: -1 })
+        .exec();
     },
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId })

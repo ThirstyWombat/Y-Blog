@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import User from "./pages/User/userPage";
 import Access from "./pages/access/login";
 import SignUp from "./pages/access/signUp";
-import TestNav from "./components/Nav/Testnav";
+import NavBar from "./components/Nav/NavBar";
 import CreatePost from "./pages/post/post";
 import Homepage from "./pages/homepage";
 import { SinglePost } from "./components/Post/SinglePost";
@@ -45,7 +45,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <TestNav />
+          <NavBar />
           <Routes>
             {/* Define routes for each page */}
             <Route path="/" element={<Homepage />} />
