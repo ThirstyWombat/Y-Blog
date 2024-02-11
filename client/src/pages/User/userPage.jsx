@@ -11,7 +11,6 @@ const User = () => {
       Loading... 
     </div>); 
   }
-  console.log(data);
  
 function noPostsExists() {
   if (data.me.posts == 0) {

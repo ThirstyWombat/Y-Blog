@@ -5,7 +5,6 @@ import Auth from "../utils/auth";
 import Post from "../components/Post/CreatePost";
 export default function Homepage() {
   const { loading, error, data } = useQuery(GET_POSTS);
-  console.log("this is the data", data);
   if (loading){
     return (
     <div >

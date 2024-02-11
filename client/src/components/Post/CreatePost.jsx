@@ -23,12 +23,10 @@ export default function Post() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("this is the post state", postState);
     try {
       const mutationResponse = await post({
         variables: { postBody: postState.content },
       });
-      console.log(mutationResponse);
     } catch (e) {
       console.log(e);
     }
