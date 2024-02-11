@@ -11,11 +11,11 @@ export default function Homepage() {
       {data?.posts.map((post) => (
         <PostComponent
           key={post._id}
-          username={post.author.username}
+          username={post.author?.username}
           postBody={post.postBody}
           createdAt={post.createdAt}
-        />
-      ))}
+        /> 
+        )) }
     </div>
   );
 }

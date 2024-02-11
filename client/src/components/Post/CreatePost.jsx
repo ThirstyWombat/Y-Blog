@@ -34,10 +34,11 @@ export default function Post() {
 
   return (
     <form
-      className=" w-1/2  mt-8 space-y-6 rounded-lg bg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] "
+      className=" w-3/4 mt-8 space-y-6 rounded-lg bg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] "
       onSubmit={handleSubmit}
     >
       <div>
+        <div className="italic text-lg text-gray-500">What is up?!</div>
         {fields.map((field) => (
           <Input
             key={field.id}
