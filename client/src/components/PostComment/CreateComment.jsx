@@ -36,20 +36,22 @@ export default function CreateComment() {
     >
       <div>
         <div className="italic text-lg text-gray-500">Make a comment</div>
-        {fields.map((field) => (
-          <Input
-            key={field.id}
-            handleChange={handleChange}
-            value={commentState[field.id]}
-            labelText={field.labelText}
-            labelFor={field.labelFor}
-            id={field.id}
-            name={field.name}
-            type={field.type}
-            isRequired={field.isRequired}
-            placeholder={field.placeholder}
-          />
-        ))}
+        {fields.map((field) => {
+          return (
+            <Input
+              key={field.id}
+              handleChange={handleChange}
+              value={commentState[field.id]}
+              labelText={field.labelText}
+              labelFor={field.labelFor}
+              id={field.id}
+              name={field.name}
+              type={field.type}
+              isRequired={field.isRequired}
+              placeholder={field.placeholder}
+            />
+          );
+        })}
       </div>
       {error ? (
         <div>

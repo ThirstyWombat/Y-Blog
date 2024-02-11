@@ -46,6 +46,7 @@ export const GET_POST = gql`
           _id
           username
         }
+        _id
         commentText
         createdAt
       }
