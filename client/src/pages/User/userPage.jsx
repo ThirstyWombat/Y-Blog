@@ -11,8 +11,21 @@ const User = () => {
       Loading... 
     </div>); 
   }
+  console.log(data);
  
-
+function noPostsExists() {
+  if (data.me.posts == 0) {
+  return (
+    <div className="my-8 p-8 bg-gray-200 rounded-lg">
+          <p className="italic text-lg ">
+            No posts have been made yet
+          </p>
+    </div>
+  )
+} else {
+  return;
+  }
+}
   
   return (
     <>
@@ -21,7 +34,7 @@ const User = () => {
       {error ? (
         <div className="my-8 p-8 bg-gray-200 rounded-lg">
           <p className="italic text-lg ">
-            No posts yet.
+            Error displaying Posts.
           </p>
         </div>
       ) : 
@@ -34,6 +47,9 @@ const User = () => {
         />
         ))
       }
+      <div>
+        {noPostsExists()}
+      </div>
       </div>
     </>
   )

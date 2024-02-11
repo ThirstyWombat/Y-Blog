@@ -7,15 +7,15 @@ export default function TestNav() {
     if (Auth.loggedIn()) {
       return (
         <>
-          <NavLink to="/" className="px-4">Home</NavLink>
-          <NavLink to="/user" className="px-4">Profile</NavLink>
+          <NavLink to="/" className="px-4 hover:underline decoration-[#B8DEF4]">Home</NavLink>
+          <NavLink to="/user" className="px-4 hover:underline decoration-[#B8DEF4]">Profile</NavLink>
         </>
       );
     }
     return (
       <>
-        <NavLink to="/" className="px-4">Home</NavLink>
-        <NavLink to="/signup"className="px-4" >Sign Up</NavLink>
+        <NavLink to="/" className="px-4 hover:underline decoration-[#B8DEF4]">Home</NavLink>
+        <NavLink to="/signup"className="px-4 hover:underline decoration-[#B8DEF4]" >Sign Up</NavLink>
       </>
     );
   }
