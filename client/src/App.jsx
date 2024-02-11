@@ -14,6 +14,7 @@ import SignUp from "./pages/access/signUp";
 import TestNav from "./components/Nav/Testnav";
 import CreatePost from "./pages/post/post";
 import Homepage from "./pages/homepage";
+import SinglePost from "./pages/post/SinglePost";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -52,6 +53,7 @@ function App() {
             <Route path="/login" element={<Access />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/create" element={<CreatePost />} />
+            <Route path="/post/:postId" element={<SinglePost />} />
             {/* Add more routes for other pages */}
           </Routes>
         </div>

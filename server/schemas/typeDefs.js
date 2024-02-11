@@ -18,7 +18,7 @@ const typeDefs = `#graphql
   type Comment {
     _id: ID
     commentText: String
-    commentAuthor: ID!
+    commentAuthor: User
     createdAt: String
   }
 
