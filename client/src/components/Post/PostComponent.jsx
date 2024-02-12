@@ -1,30 +1,32 @@
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
-// import DELETE_POST from "../../utils/reducers"
+import { useMutation } from "@apollo/client";
+import { REMOVE_POST } from "../../utils/mutations";
+
 export default function PostComponent({
   username,
   createdAt,
   postBody,
   postId,
+  userId
 }) {
-  // import { useStoreContext } from '../utils/GlobalState';
-
-  // const removePost= () => {
-  // //   const [state, dispatch] = useStoreContext();
-  // // }
-  // //   const deletePost = () => {
-  // //     dispatch({
-  // //       type: DELETE_POST,
-  // //       _id: post._id,
-  // //     });
-  //   console.log('hit');
-  //   }
+  
+const [removePost] = useMutation(REMOVE_POST);
+const handleSubmit = async () => {
+    try {
+      const mutationResponse = await removePost({
+        variables: { postId: postId, userId: userId },
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   function renderPostActions() {
     if (Auth.loggedIn()) {
       if (Auth.getProfile().data.username == username) {
         return (
-          <button className="flex flex-wrap content-end justify-end float-right">
+          <button className="flex flex-wrap content-end justify-end float-right" onClick={handleSubmit} >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
