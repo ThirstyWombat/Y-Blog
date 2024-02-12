@@ -44,6 +44,8 @@ function noPostsExists() {
         username={data.me.username}
         postBody={post.postBody}
         createdAt={post.createdAt}
+        userId= {data.me._id}
+        postId={post._id}
         />
         ))
       }

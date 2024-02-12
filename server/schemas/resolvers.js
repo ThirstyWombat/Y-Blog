@@ -7,7 +7,7 @@ const resolvers = {
 			return User.find();
 		},
 		me: async (parent, args, context) => {
-			console.log(context.user);
+			// console.log(context.user);
 			if (context.user) {
 				return User.findOne({ _id: context.user._id })
 					.populate(['posts'])
@@ -16,7 +16,7 @@ const resolvers = {
 			throw new AuthenticationError('Not logged in');
 		},
 		user: async (parent, { userId }) => {
-			console.log(userId);
+			// console.log(userId);
 			return User.findOne({ _id: userId });
 		},
 		posts: async (parent, { username }) => {
@@ -64,7 +64,7 @@ const resolvers = {
 					runValidators: true,
 				}
 			);
-			console.log('CONTENTS OF POST AND ID >', post, post._id);
+			// console.log('CONTENTS OF POST AND ID >', post, post._id);
 			return post;
 		},
 		addComment: async (parent, { postId, commentText }, context) => {
