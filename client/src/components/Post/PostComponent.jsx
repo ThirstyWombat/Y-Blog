@@ -1,25 +1,12 @@
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
-// import DELETE_POST from "../../utils/reducers"
 export default function PostComponent({
   username,
   createdAt,
   postBody,
   postId,
 }) {
-  // import { useStoreContext } from '../utils/GlobalState';
-
-  // const removePost= () => {
-  // //   const [state, dispatch] = useStoreContext();
-  // // }
-  // //   const deletePost = () => {
-  // //     dispatch({
-  // //       type: DELETE_POST,
-  // //       _id: post._id,
-  // //     });
-  //   console.log('hit');
-  //   }
-
+  
   function renderPostActions() {
     if (Auth.loggedIn()) {
       if (Auth.getProfile().data.username == username) {
