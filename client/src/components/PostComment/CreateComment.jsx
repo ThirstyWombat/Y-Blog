@@ -3,15 +3,17 @@ import { postFields } from "../../constants/commentFields";
 import Input from "../Post/postInput";
 import FormAction from "../Access/formAction";
 import { useMutation } from "@apollo/client";
-import { POST } from "../../utils/mutations";
+import { POST, ADD_COMMENT } from "../../utils/mutations";
 
+import { useParams } from "react-router-dom";
 const fields = postFields;
 let fieldsState = {};
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function CreateComment() {
+  const { postId } = useParams();
   const [commentState, setCommentState] = useState(fieldsState);
-  const [post, { error }] = useMutation(POST);
+  const [addComment, { error }] = useMutation(ADD_COMMENT);
 
   const handleChange = (e) => {
     setCommentState({ ...commentState, [e.target.id]: e.target.value });
@@ -19,10 +21,10 @@ export default function CreateComment() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("this is the comment state", commentState);
     try {
-      const mutationResponse = await post({
-        variables: { commentText: commentState.content },
+      const mutationResponse = await addComment({
+        variables: { postId: postId, commentText: commentState.comment },
       });
     } catch (e) {
       console.log(e);
