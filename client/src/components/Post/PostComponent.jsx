@@ -8,15 +8,16 @@ export default function PostComponent({
   createdAt,
   postBody,
   postId,
-  userId
+  userId,
+  onDeleteSuccess,
 }) {
-  
-const [removePost] = useMutation(REMOVE_POST);
-const handleSubmit = async () => {
+  const [removePost] = useMutation(REMOVE_POST);
+  const handleSubmit = async () => {
     try {
       const mutationResponse = await removePost({
         variables: { postId: postId, userId: userId },
       });
+      onDeleteSuccess();
     } catch (e) {
       console.log(e);
     }
@@ -26,7 +27,10 @@ const handleSubmit = async () => {
     if (Auth.loggedIn()) {
       if (Auth.getProfile().data.username == username) {
         return (
-          <button className="flex flex-wrap content-end justify-end float-right" onClick={handleSubmit} >
+          <button
+            className="flex flex-wrap content-end justify-end float-right"
+            onClick={handleSubmit}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

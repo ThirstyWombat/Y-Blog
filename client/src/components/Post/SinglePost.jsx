@@ -12,11 +12,10 @@ import CommmentComponent from "../CommentComponent";
 //then underneath that have a list of comment components generated via a map of the particular post's comments array
 //when you enter a text into the comment text field and submit it will add it will execute the add comment mutation
 
-
 export function SinglePost() {
   const { postId } = useParams();
   console.log("this is the post id", postId);
-  const { loading, data } = useQuery(GET_POST, {
+  const { loading, data, refetch } = useQuery(GET_POST, {
     variables: { postId: postId },
   });
   console.log("this is the data from GET_POST", data);
@@ -28,6 +27,7 @@ export function SinglePost() {
         postBody={data?.post.postBody}
         createdAt={data?.post.createdAt}
       />
+      <CreateComment />
       {data?.post.comments.map((comment) => (
         <CommmentComponent
           key={comment._id}
@@ -35,7 +35,8 @@ export function SinglePost() {
           username={comment.commentAuthor?.username}
           commentText={comment.commentText}
           createdAt={comment.createdAt}
-          postId = {postId}
+          postId={postId}
+          onDeleteSuccess={() => refetch()}
         />
       ))}
     </div>

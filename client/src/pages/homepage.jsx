@@ -39,6 +39,7 @@ export default function Homepage() {
             postBody={post.postBody}
             createdAt={post.createdAt}
             userId={post.author?._id}
+            onDeleteSuccess={() => refetch()}
           />
         ))}
       </div>

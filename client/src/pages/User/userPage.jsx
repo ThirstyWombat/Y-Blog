@@ -31,30 +31,26 @@ const User = () => {
 
   return (
     <>
-
-    <div className="flex flex-col flex-wrap content-center">
-    <Post onPostSuccess={refetch}/>
-      {error ? (
-        <div className="my-8 p-8 bg-gray-200 rounded-lg">
-          <p className="italic text-lg ">
-            Error displaying Posts.
-          </p>
-        </div>
-      ) : 
-      data?.me?.posts?.map((post) => (
-        <PostComponent
-        key={post._id}
-        username={data.me.username}
-        postBody={post.postBody}
-        createdAt={post.createdAt}
-        userId= {data.me._id}
-        postId={post._id}
-        />
-        ))
-      }
-      <div>
-        {noPostsExists()}
-      </div>
+      <div className="flex flex-col flex-wrap content-center">
+        <Post onPostSuccess={refetch} />
+        {error ? (
+          <div className="my-8 p-8 bg-gray-200 rounded-lg">
+            <p className="italic text-lg ">Error displaying Posts.</p>
+          </div>
+        ) : (
+          data?.me?.posts?.map((post) => (
+            <PostComponent
+              key={post._id}
+              username={data.me.username}
+              postBody={post.postBody}
+              createdAt={post.createdAt}
+              userId={data.me._id}
+              postId={post._id}
+              onDeleteSuccess={() => refetch()}
+            />
+          ))
+        )}
+        <div>{noPostsExists()}</div>
       </div>
     </>
   );
