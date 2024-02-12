@@ -18,6 +18,20 @@ const commentSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
+  upvotes: {
+    type: Number,
+    default: 0,
+  },
+  downvotes: {
+    type: Number,
+    default: 0,
+  },
+  replies: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
 });
 
 const Comment = model("Comment", commentSchema);
