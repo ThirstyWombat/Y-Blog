@@ -26,6 +26,7 @@ export default function CreateComment() {
       const mutationResponse = await addComment({
         variables: { postId: postId, commentText: commentState.comment },
       });
+      setCommentState({ ...commentState, comment: "" });
     } catch (e) {
       console.log(e);
     }
