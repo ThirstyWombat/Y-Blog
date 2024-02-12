@@ -20,12 +20,13 @@ export function SinglePost() {
   });
   console.log("this is the data from GET_POST", data);
   return (
-    <div className="flex flex-wrap flex-col content-center">
+    <div className="flex flex-wrap flex-col wrapper">
       <PostComponent
         postId={data?.post._id}
         username={data?.post.author?.username}
         postBody={data?.post.postBody}
         createdAt={data?.post.createdAt}
+        commentCount={data?.post.comments.length}
       />
       <CreateComment />
       {data?.post.comments.map((comment) => (

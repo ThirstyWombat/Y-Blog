@@ -39,7 +39,7 @@ export default function NavBar() {
       return (
         <div>
           <Link
-            className="text-lg font-semibold leading-6 text-gray-900"
+            className="text-lg font-semibold leading-6 "
             onClick={() => Auth.logout()}
           >
             Logout <span aria-hidden="true">→</span>

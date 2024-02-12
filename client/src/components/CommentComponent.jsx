@@ -51,7 +51,7 @@ export default function CommmentComponent({
   }
 
   return (
-    <div className="m-1 w-3/4 rounded-md appearance-none rbg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] focus:outline-none focus:ring-blue-300 focus:border-blue-400 focus:z-10 sm:text-sm">
+    <div className="m-1 w-full rounded-md appearance-none bg-darkRedditLighter p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] focus:outline-none focus:ring-blue-300 focus:border-blue-400 focus:z-10 sm:text-sm">
       {renderActions()}
       <div className="flex flex-shrink-0 p-4 pb-0">
         <a href="#" className="flex-shrink-0 group block">

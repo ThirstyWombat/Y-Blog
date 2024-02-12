@@ -10,6 +10,7 @@ export default function PostComponent({
   postId,
   userId,
   onDeleteSuccess,
+  commentCount,
 }) {
   const [removePost] = useMutation(REMOVE_POST);
   const handleSubmit = async () => {
@@ -52,7 +53,7 @@ export default function PostComponent({
     return;
   }
   return (
-    <div className="m-1 w-3/4 rounded-md appearance-none rbg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] focus:outline-none focus:ring-blue-300 focus:border-blue-400 focus:z-10 sm:text-sm">
+    <div className="m-1 bg-darkRedditLighter rounded-md appearance-none rbg-grey p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] focus:outline-none focus:ring-blue-300 focus:border-blue-400 focus:z-10 sm:text-sm">
       {renderPostActions()}
       <div className="flex flex-shrink-0 p-4 pb-0">
         <a href="#" className="flex-shrink-0 group block">
@@ -86,7 +87,7 @@ export default function PostComponent({
               <div className="flex-1 text-center">
                 <Link
                   to={`/post/${postId}`}
-                  className="w-12 mt-1 group flex items-center px-3 py-2 text-base leading-6 font-medium rounded-full"
+                  className=" mt-1 group flex items-center px-3 py-2 text-base leading-6 font-medium rounded-full"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -102,6 +103,7 @@ export default function PostComponent({
                       d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 0 1 1.037-.443 48.282 48.282 0 0 0 5.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"
                     />
                   </svg>
+                  <span className="text-xs ml-1">{commentCount}</span>
                 </Link>
               </div>
             </div>

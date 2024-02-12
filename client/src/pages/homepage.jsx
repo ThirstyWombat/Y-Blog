@@ -19,7 +19,7 @@ export default function Homepage() {
   function createButton() {
     if (Auth.loggedIn()) {
       return (
-        <div className="flex flex-col flex-wrap content-center">
+        <div className="flex flex-col flex-wrap wrapper">
           <Post onPostSuccess={refetch} />
         </div>
       );
@@ -30,7 +30,7 @@ export default function Homepage() {
   return (
     <>
       <div>{createButton()}</div>
-      <div className="flex flex-wrap flex-col content-center">
+      <div className="flex flex-wrap flex-col wrapper">
         {data?.posts.map((post) => (
           <PostComponent
             key={post._id}
@@ -39,6 +39,7 @@ export default function Homepage() {
             postBody={post.postBody}
             createdAt={post.createdAt}
             userId={post.author?._id}
+            commentCount={post.comments?.length}
             onDeleteSuccess={() => refetch()}
           />
         ))}

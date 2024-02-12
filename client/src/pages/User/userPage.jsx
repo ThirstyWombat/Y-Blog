@@ -31,7 +31,7 @@ const User = () => {
 
   return (
     <>
-      <div className="flex flex-col flex-wrap content-center">
+      <div className="flex flex-col flex-wrap wrapper">
         <Post onPostSuccess={refetch} />
         {error ? (
           <div className="my-8 p-8 bg-gray-200 rounded-lg">
@@ -46,6 +46,7 @@ const User = () => {
               createdAt={post.createdAt}
               userId={data.me._id}
               postId={post._id}
+              commentCount={post.comments?.length}
               onDeleteSuccess={() => refetch()}
             />
           ))
