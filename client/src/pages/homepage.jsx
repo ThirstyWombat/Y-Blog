@@ -38,6 +38,7 @@ export default function Homepage() {
             username={post.author?.username}
             postBody={post.postBody}
             createdAt={post.createdAt}
+            userId= {post.author?._id}
           />
         ))}
       </div>
