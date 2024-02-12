@@ -4,7 +4,7 @@ import { GET_POSTS } from "../utils/queries";
 import Auth from "../utils/auth";
 import Post from "../components/Post/CreatePost";
 export default function Homepage() {
-  const { loading, error, data } = useQuery(GET_POSTS);
+  const { loading, error, data, refetch } = useQuery(GET_POSTS);
   if (loading) {
     return (
       <div>
@@ -20,7 +20,7 @@ export default function Homepage() {
     if (Auth.loggedIn()) {
       return (
         <div className="flex flex-col flex-wrap content-center">
-          <Post />
+          <Post onPostSuccess={refetch} />
         </div>
       );
     } else {
@@ -38,7 +38,7 @@ export default function Homepage() {
             username={post.author?.username}
             postBody={post.postBody}
             createdAt={post.createdAt}
-            userId= {post.author?._id}
+            userId={post.author?._id}
           />
         ))}
       </div>

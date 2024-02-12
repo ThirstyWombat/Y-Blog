@@ -5,14 +5,11 @@ import FormAction from "../Access/formAction";
 import { useMutation } from "@apollo/client";
 import { POST } from "../../utils/mutations";
 
-
 const fields = postFields;
 let fieldsState = {};
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
-
-
-export default function Post() {
+export default function Post(props) {
   const [postState, setPostState] = useState(fieldsState);
   const [post, { error }] = useMutation(POST);
 
@@ -27,6 +24,8 @@ export default function Post() {
       const mutationResponse = await post({
         variables: { postBody: postState.content },
       });
+      props.onPostSuccess();
+      setPostState({ ...postState, content: "" });
     } catch (e) {
       console.log(e);
     }
@@ -61,7 +60,7 @@ export default function Post() {
           </p>
         </div>
       ) : null}
-      <FormAction text="Post"/>
+      <FormAction text="Post" />
     </form>
   );
 }
