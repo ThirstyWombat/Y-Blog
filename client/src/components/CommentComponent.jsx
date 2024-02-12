@@ -1,15 +1,29 @@
 import Auth from "../utils/auth";
+import { REMOVE_COMMENT } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
 export default function CommmentComponent({
   username,
   commentText,
   createdAt,
   commentId,
+  postId
 }) {
+const [removeComment] = useMutation(REMOVE_COMMENT);
+const handleSubmit = async () => {
+    try {
+      const mutationResponse = await removeComment({
+        variables: { postId: postId,commentId: commentId },
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
 function renderActions() {
   if (Auth.loggedIn()) {
     if (Auth.getProfile().data.username == username) {
       return (
-        <button className="flex flex-wrap content-end justify-end float-right">
+        <button className="flex flex-wrap content-end justify-end float-right" onClick={handleSubmit}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

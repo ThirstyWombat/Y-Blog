@@ -28,8 +28,6 @@ export function SinglePost() {
         postBody={data?.post.postBody}
         createdAt={data?.post.createdAt}
       />
-      <CreateComment />
-      
       {data?.post.comments.map((comment) => (
         <CommmentComponent
           key={comment._id}
@@ -37,6 +35,7 @@ export function SinglePost() {
           username={comment.commentAuthor?.username}
           commentText={comment.commentText}
           createdAt={comment.createdAt}
+          postId = {postId}
         />
       ))}
     </div>
