@@ -15,7 +15,7 @@ import CommmentComponent from "../CommentComponent";
 export function SinglePost() {
   const { postId } = useParams();
   console.log("this is the post id", postId);
-  const { loading, data } = useQuery(GET_POST, {
+  const { loading, data, refetch } = useQuery(GET_POST, {
     variables: { postId: postId },
   });
   console.log("this is the data from GET_POST", data);
@@ -36,6 +36,7 @@ export function SinglePost() {
           commentText={comment.commentText}
           createdAt={comment.createdAt}
           postId={postId}
+          onDeleteSuccess={() => refetch()}
         />
       ))}
     </div>
