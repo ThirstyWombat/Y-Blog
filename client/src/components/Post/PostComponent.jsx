@@ -1,17 +1,32 @@
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
+import { useMutation } from "@apollo/client";
+import { REMOVE_POST } from "../../utils/mutations";
+
 export default function PostComponent({
   username,
   createdAt,
   postBody,
   postId,
+  userId
 }) {
   
+const [removePost] = useMutation(REMOVE_POST);
+const handleSubmit = async () => {
+    try {
+      const mutationResponse = await removePost({
+        variables: { postId: postId, userId: userId },
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   function renderPostActions() {
     if (Auth.loggedIn()) {
       if (Auth.getProfile().data.username == username) {
         return (
-          <button className="flex flex-wrap content-end justify-end float-right">
+          <button className="flex flex-wrap content-end justify-end float-right" onClick={handleSubmit} >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
