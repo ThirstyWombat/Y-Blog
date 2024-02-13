@@ -21,7 +21,6 @@ export default function CreateComment() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("this is the comment state", commentState);
     try {
       const mutationResponse = await addComment({
         variables: { postId: postId, commentText: commentState.comment },

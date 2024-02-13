@@ -12,7 +12,7 @@ fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Signup() {
   const [signupState, setSignupState] = useState(fieldsState);
-  const [addUser] = useMutation(SIGNUP);
+  const [addUser, { error }] = useMutation(SIGNUP);
 
   const handleChange = (e) =>
     setSignupState({ ...signupState, [e.target.id]: e.target.value });
@@ -53,6 +53,14 @@ export default function Signup() {
             placeholder={field.placeholder}
           />
         ))}
+
+        {error ? (
+          <div>
+            <p className="text-red-600 hover:text-red-500">
+              Password must be at least 8 characters long
+            </p>
+          </div>
+        ) : null}
         <FormAction text="Sign Up" />
       </div>
     </form>
