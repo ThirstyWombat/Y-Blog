@@ -1,6 +1,7 @@
 # Y-Blog
 
-![final project 3](https://github.com/ThirstyWombat/Y-Blog/assets/122827259/4550e3b6-5aae-434b-bcd6-f7e68abde758)
+![final project real](https://github.com/ThirstyWombat/Y-Blog/assets/122827259/235dcde0-2547-4d70-b153-2881fb67163e)
+
 
 <a href="">Y-Blog</a>
 
