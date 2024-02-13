@@ -1,5 +1,7 @@
 # Y-Blog
 
+![final project 3](https://github.com/ThirstyWombat/Y-Blog/assets/122827259/4550e3b6-5aae-434b-bcd6-f7e68abde758)
+
 <a href="">Y-Blog</a>
 
 ## Concept
