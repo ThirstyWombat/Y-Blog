@@ -27,6 +27,11 @@ export const GET_USER_POSTS = gql`
       _id
       username
       posts {
+        comments {
+          _id
+          commentText
+          createdAt
+        }
         _id
         postBody
         createdAt
@@ -41,6 +46,11 @@ export const GET_POST = gql`
       _id
       postBody
       createdAt
+      author {
+        _id
+        username
+        email
+      }
       comments {
         commentAuthor {
           _id

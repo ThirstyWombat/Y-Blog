@@ -1,3 +1,18 @@
 /* * {
   border: 1px green solid;
 } */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-darkReddit text-gray-light;
+  }
+}
+
+@layer utilities {
+  .wrapper {
+    @apply max-w-5xl mx-auto;
+  }
+}
