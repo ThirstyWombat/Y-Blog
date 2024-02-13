@@ -1,5 +1,5 @@
 const fixedInputClass =
-  "rounded-md appearance-none  bg-darkRedditDarker text-white relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-600 focus:border-blue-600 focus:z-10 sm:text-sm";
+  "rounded-md appearance-none  bg-darkRedditDarker text-white relative block w-full px-3 py-2  placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-blue-600 focus:border-blue-600 focus:z-10 sm:text-sm";
 
 export default function Input({
   handleChange,

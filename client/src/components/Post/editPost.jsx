@@ -38,7 +38,7 @@ export default function Post() {
       onSubmit={handleSubmit}
     >
       <div>
-        <div className="italic text-lg text-gray-500">What is up?!</div>
+        <div className="italic text-xlg text-white-500">What is up?!</div>
         {fields.map((field) => (
           <Input
             key={field.id}
