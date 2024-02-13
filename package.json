@@ -9,6 +9,7 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
     "build": "npm run install &&  cd ../ && npm run seed && cd ../client && npm run build",
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -17,4 +18,5 @@
   "dependencies": {
     "@heroicons/react": "^2.1.1"
   }
+
 }
